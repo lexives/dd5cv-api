@@ -1,9 +1,9 @@
 const express = require("express");   // api framework
-const mongoose = require("mongoose");  // a library for interacting with MongoDB
+const mongoose = require("mongoose"); // a library for interacting with MongoDB
+const routes = require("../app/routes")
 
 // Get environment variables
 const PORT = process.env.PORT;
-const APP_SECRET = process.env.APP_SECRET;
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
 
 // Connect to MongoDB
@@ -13,6 +13,7 @@ mongoose.connect(
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true,
+        useFindAndModify: false
     }
 ).then(
     onFulfilled = (result) => {
@@ -21,13 +22,10 @@ mongoose.connect(
         app.use(express.json());
         app.use(express.urlencoded({ extended: true }));
 
-        // add handlers for each path
-        app.get("/", (req, res) => {
-            return res.send(APP_SECRET);
-        });
+        // Add routes
+        app.use("/", routes)
 
         // Run the app on the configured port
-        console.log("BEEP BOOP BOP");
         app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
     }, 
