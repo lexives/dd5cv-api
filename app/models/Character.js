@@ -26,6 +26,12 @@ const schema = mongoose.Schema({
     int: Number,
     wis: Number,
     cha: Number,
+    classes: [
+        {
+            name: String,
+            level: Number
+        }
+    ],
     saving_throws: {
         str: {
             proficient: Boolean,
