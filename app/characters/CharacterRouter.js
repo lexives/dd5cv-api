@@ -51,6 +51,10 @@ CharacterRouter.post(BASE_PATH, async (request, response) => {
     Character.create(request.body, (error, character) => {
         if (error) {
             console.log("\nERROR: Could not create Character\n", error)
+            response.status("500")
+            response.send({
+                error: error.message
+            })
         } else {
             response.status("201")
             response.send(character)
