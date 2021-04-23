@@ -39,7 +39,7 @@ CharacterRouter.get(BASE_PATH + "/:id", async (request, response) => {
         response.status("400")
         response.send({ 
             error: "Invalid format: Id must be a single string of 12 bytes " + 
-                "or a tring of 24 hex characters " 
+                "or a string of 24 hex characters " 
         })
     }
 })
@@ -88,7 +88,7 @@ CharacterRouter.patch(BASE_PATH + "/:id", async (request, response) => {
         response.status("400")
         response.send({ 
             error: "Invalid format: Id must be a single string of 12 bytes " + 
-                "or a tring of 24 hex characters " 
+                "or a string of 24 hex characters " 
         })
     }
 })
@@ -122,7 +122,7 @@ CharacterRouter.patch(BASE_PATH + "/:id", async (request, response) => {
         response.status("400")
         response.send({ 
             error: "Invalid format: Id must be a single string of 12 bytes " + 
-                "or a tring of 24 hex characters " 
+                "or a string of 24 hex characters " 
         })
     }
 })
